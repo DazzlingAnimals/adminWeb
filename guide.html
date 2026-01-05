@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <title>Dazzling Animals NFT 관리자 대시보드 - 사용 가이드</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .guide-section {
+      background: rgba(40, 44, 52, 0.9);
+      border: 1px solid #404040;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-left: 4px solid #00ffcc;
+    }
+
+    .guide-section h2 {
+      color: #00ffcc;
+      margin-top: 0;
+      font-size: 1.5em;
+    }
+
+    .guide-section h3 {
+      color: #ffffff;
+      margin-top: 20px;
+      font-size: 1.2em;
+    }
+
+    .guide-section ul,
+    .guide-section ol {
+      line-height: 1.8;
+      color: #e0e0e0;
+    }
+
+    .guide-section li {
+      margin-bottom: 8px;
+    }
+
+    .guide-section code {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 2px 6px;
+      border-radius: 3px;
+      color: #00ffcc;
+      font-family: monospace;
+    }
+
+    .guide-section pre {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 15px;
+      border-radius: 6px;
+      overflow-x: auto;
+      color: #00ffcc;
+      font-family: monospace;
+      line-height: 1.6;
+    }
+
+    .warning-guide {
+      background: rgba(255, 107, 107, 0.1);
+      border-left: 4px solid #ff6b6b;
+      padding: 15px;
+      border-radius: 6px;
+      margin: 15px 0;
+    }
+
+    .warning-guide h4 {
+      color: #ff6b6b;
+      margin-top: 0;
+    }
+
+    .info-guide {
+      background: rgba(0, 255, 204, 0.1);
+      border-left: 4px solid #00ffcc;
+      padding: 15px;
+      border-radius: 6px;
+      margin: 15px 0;
+    }
+
+    .info-guide h4 {
+      color: #00ffcc;
+      margin-top: 0;
+    }
+
+    .back-button {
+      display: inline-block;
+      padding: 12px 24px;
+      background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: all 0.3s;
+      margin-bottom: 20px;
+    }
+
+    .back-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0, 123, 255, 0.4);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <a href="./index.html" class="back-button">← 대시보드로 돌아가기</a>
+
+    <header>
+      <h1 style="text-align:center;">📖 Dazzling Animals NFT<br>관리자 대시보드 사용 가이드</h1>
+      <p class="subtitle" style="text-align:center;">NFT 컬렉션을 안전하고 효율적으로 관리하는 방법</p>
+    </header>
+
+    <!-- 시작하기 -->
+    <div class="guide-section">
+      <h2>🚀 시작하기</h2>
+      
+      <h3>1. 지갑 연결</h3>
+      <ol>
+        <li><strong>MetaMask 설치</strong>: 아직 설치하지 않았다면 <a href="https://metamask.io" target="_blank" style="color:#00ffcc;">metamask.io</a>에서 설치하세요</li>
+        <li><strong>네트워크 선택</strong>: Ethereum Mainnet 또는 Sepolia Testnet 중 선택</li>
+        <li><strong>지갑 연결</strong>: "🔗 지갑 연결 (MetaMask)" 버튼 클릭</li>
+        <li><strong>권한 확인</strong>: 연결 후 대시보드에서 본인의 권한 레벨 확인</li>
+      </ol>
+
+      <div class="info-guide">
+        <h4>💡 권한 레벨이란?</h4>
+        <ul>
+          <li><strong>👑 Admin (관리자)</strong>: 모든 기능 사용 가능, 다른 관리자/운영자 추가 가능</li>
+          <li><strong>⚙️ Operator (운영자)</strong>: 민팅, 화이트리스트, 판매 설정 가능</li>
+          <li><strong>👤 User (일반 사용자)</strong>: 조회 기능만 사용 가능</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- NFT 발행 -->
+    <div class="guide-section">
+      <h2>🎨 NFT 발행 (민팅)</h2>
+      
+      <h3>Owner 민팅 (무료 발행)</h3>
+      <p>관리자 또는 운영자가 특정 주소로 NFT를 무료로 발행합니다.</p>
+      <ol>
+        <li>"👑 Owner 민팅" 카테고리 열기</li>
+        <li>받는 주소 입력 (예: <code>0x1234...abcd</code>)</li>
+        <li>발행할 NFT 개수 입력 (1~100)</li>
+        <li>"민팅 실행" 버튼 클릭</li>
+        <li>MetaMask에서 트랜잭션 승인</li>
+      </ol>
+
+      <div class="warning-guide">
+        <h4>⚠️ 주의사항</h4>
+        <ul>
+          <li>한 번에 최대 <strong>100개</strong>까지만 발행 가능</li>
+          <li>최대 발행량을 초과할 수 없음</li>
+          <li>가스비는 발생하지만 민팅 비용은 무료</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 화이트리스트 관리 -->
+    <div class="guide-section">
+      <h2>🤍 화이트리스트 관리</h2>
+      
+      <h3>일괄 추가 (최대 100개)</h3>
+      <ol>
+        <li>"🤍 화이트리스트 관리" 카테고리 열기</li>
+        <li>텍스트 영역에 주소 입력 (한 줄에 하나씩)</li>
+        <li>미리보기 확인 (자동으로 유효성 검증)</li>
+        <li>"일괄 추가" 버튼 클릭</li>
+      </ol>
+
+      <div class="info-guide">
+        <h4>💡 입력 예시</h4>
+        <pre>0x1234567890123456789012345678901234567890
+0xabcdefabcdefabcdefabcdefabcdefabcdefabcd
+0x9876543210987654321098765432109876543210</pre>
+        <p>중복된 주소는 자동으로 제거됩니다.</p>
+      </div>
+
+      <h3>일괄 제거</h3>
+      <p>일괄 추가와 동일한 방식으로 여러 주소를 한 번에 제거할 수 있습니다.</p>
+
+      <h3>개별 설정</h3>
+      <p>하나의 주소만 추가하거나 제거할 때 사용합니다.</p>
+    </div>
+
+    <!-- 판매 설정 -->
+    <div class="guide-section">
+      <h2>💰 판매 설정</h2>
+      
+      <h3>🔄 새 라운드(Epoch) 시작 - 간편 버전</h3>
+      <div class="warning-guide">
+        <h4>⚠️ 매우 중요한 주의사항!</h4>
+        <p><strong style="font-size:1.1em;">이 함수는 되돌릴 수 없습니다!</strong></p>
+        <ul style="margin-top:10px;">
+          <li><strong>라운드 번호만 증가</strong>시킵니다. (Epoch만 +1)</li>
+          <li>모든 사용자의 <strong>월별 민팅 한도가 자동으로 초기화</strong>됩니다.</li>
+          <li>트랜잭션 취소 알람이 떠도 <strong>트랜잭션이 실제로 성공했을 수 있습니다.</strong></li>
+          <li>새 라운드 시작 후 <strong>반드시 "현재 라운드 조회"</strong>를 통해 라운드 번호를 확인하세요!</li>
+          <li><strong>판매 설정은 별도로</strong> "종합 판매 설정"에서 진행합니다.</li>
+        </ul>
+      </div>
+
+      <div class="info-guide">
+        <h4>📅 라운드 번호 = 월</h4>
+        <p>라운드 번호는 월을 의미합니다:</p>
+        <pre style="background:rgba(0,0,0,0.3); padding:10px; border-radius:4px;">라운드 0 = 아직 세일 미시작
+라운드 1 = 1월 세일
+라운드 2 = 2월 세일
+라운드 3 = 3월 세일
+라운드 4 = 4월 세일
+...계속...</pre>
+      </div>
+
+      <h4>🎯 사용 시나리오</h4>
+      <p><strong>1월 세일 시작:</strong></p>
+      <ol>
+        <li>화이트리스트 주소 추가 (화이트리스트 관리)</li>
+        <li><strong>"🔄 새 라운드 시작"</strong> 버튼 클릭</li>
+        <li>→ Epoch 0 → 1로 증가</li>
+        <li>⚡ <strong>"현재 라운드 조회"</strong>로 라운드가 1이 되었는지 확인!</li>
+        <li><strong>"⚙️ 종합 판매 설정"</strong>에서 판매 설정:
+          <ul>
+            <li>화리 가격: 0.05 ETH</li>
+            <li>퍼블릭 가격: 0.1 ETH</li>
+            <li>판매 종료 ID: 122 (토큰 1~122)</li>
+            <li>판매 시작 체크</li>
+          </ul>
+        </li>
+      </ol>
+
+      <p><strong>2월 세일 시작:</strong></p>
+      <ol>
+        <li>(선택) 기존 화리 제거, 새 화리 추가</li>
+        <li><strong>"🔄 새 라운드 시작"</strong> 버튼 클릭</li>
+        <li>→ Epoch 1 → 2로 증가, 모든 사용자 민팅 한도 초기화!</li>
+        <li>⚡ <strong>"현재 라운드 조회"</strong>로 라운드가 2가 되었는지 확인!</li>
+        <li><strong>"⚙️ 종합 판매 설정"</strong>에서 판매 설정:
+          <ul>
+            <li>판매 종료 ID: 244 (토큰 123~244)</li>
+            <li>가격은 유지 또는 조정</li>
+          </ul>
+        </li>
+      </ol>
+
+      <div class="warning-guide">
+        <h4>🔥 실수 방지 팁</h4>
+        <ul>
+          <li>새 라운드 시작 전 팀원들에게 <strong>미리 공지</strong>하세요.</li>
+          <li>트랜잭션 후 <strong>반드시 "현재 라운드 조회"</strong>로 라운드 번호를 확인하세요.</li>
+          <li>실수로 두 번 눌렀다면 라운드가 의도치 않게 증가했을 수 있으니 즉시 확인하세요!</li>
+          <li>테스트넷에서 먼저 테스트 후 메인넷에서 실행하세요.</li>
+        </ul>
+      </div>
+
+      <h3>🔍 현재 라운드 조회</h3>
+      <p>현재 진행 중인 라운드 번호를 조회합니다. <strong>가스비 무료</strong> 조회 함수입니다.</p>
+      <ul>
+        <li>라운드 0 = 아직 세일이 시작되지 않음</li>
+        <li>라운드 1 = 1월 세일 진행 중</li>
+        <li>라운드 2 = 2월 세일 진행 중</li>
+        <li>새 라운드 시작 후 <strong>반드시 조회</strong>하여 라운드가 올바르게 증가했는지 확인하세요!</li>
+      </ul>
+
+      <h3>⚙️ 종합 판매 설정</h3>
+      <p>화이트리스트/퍼블릭 판매 가격, 판매 종료 토큰 ID, 시작/중지 상태를 한 번에 설정합니다.</p>
+      <p><strong>⚠️ 주의:</strong> 이 함수는 <strong>라운드를 증가시키지 않습니다.</strong> 같은 라운드 내에서 가격이나 상태만 변경할 때 사용하세요.</p>
+      
+      <div class="info-guide">
+        <h4>💡 언제 어떤 함수를 사용할까?</h4>
+        <table style="width:100%; border-collapse:collapse; margin-top:10px;">
+          <tr style="background:rgba(0,255,204,0.1);">
+            <th style="padding:10px; border:1px solid #404040; text-align:left;">상황</th>
+            <th style="padding:10px; border:1px solid #404040; text-align:left;">사용할 함수</th>
+          </tr>
+          <tr>
+            <td style="padding:10px; border:1px solid #404040;">매달 새로운 세일 시작<br>(민팅 한도 초기화 필요)</td>
+            <td style="padding:10px; border:1px solid #404040;"><strong>🔄 새 라운드 시작</strong></td>
+          </tr>
+          <tr>
+            <td style="padding:10px; border:1px solid #404040;">같은 달에 가격만 조정<br>(민팅 한도 유지)</td>
+            <td style="padding:10px; border:1px solid #404040;">⚙️ 종합 판매 설정</td>
+          </tr>
+          <tr>
+            <td style="padding:10px; border:1px solid #404040;">판매 시작/중지만 변경</td>
+            <td style="padding:10px; border:1px solid #404040;">🚀 빠른 판매 토글</td>
+          </tr>
+        </table>
+      </div>
+
+      <p>모든 판매 관련 설정을 한 번에 업데이트합니다.</p>
+      <ol>
+        <li><strong>화이트리스트 가격</strong>: ETH 단위로 입력 (예: 0.01)</li>
+        <li><strong>퍼블릭 가격</strong>: ETH 단위로 입력 (예: 0.02)</li>
+        <li><strong>판매 종료 토큰 ID</strong>: 이번 라운드에서 발행할 마지막 토큰 ID</li>
+        <li><strong>시작/중지</strong>: 체크박스로 화이트리스트/퍼블릭 판매 활성화 여부 선택</li>
+        <li>"판매 설정 적용" 버튼 클릭</li>
+      </ol>
+
+      <div class="warning-guide">
+        <h4>⚠️ 판매 종료 토큰 ID란?</h4>
+        <p>현재 판매 라운드에서 발행 가능한 <strong>마지막 토큰의 ID</strong>입니다.</p>
+        <p><strong>예시:</strong></p>
+        <ul>
+          <li>1월 판매: 종료 ID를 <strong>122</strong>로 설정 → 1~122번까지 발행 가능</li>
+          <li>2월 판매: 종료 ID를 <strong>244</strong>로 설정 → 123~244번까지 발행 가능</li>
+          <li>3월 판매: 종료 ID를 <strong>366</strong>로 설정 → 245~366번까지 발행 가능</li>
+        </ul>
+        <p>💡 매달 122개씩 판매하는 경우: 122, 244, 366, 488, 610, ...</p>
+      </div>
+
+      <h3>빠른 판매 토글</h3>
+      <p>가격이나 종료 ID는 그대로 두고, 판매 시작/중지만 빠르게 전환할 때 사용합니다.</p>
+    </div>
+
+    <!-- 제한 설정 -->
+    <div class="guide-section">
+      <h2>🎯 제한 설정</h2>
+      
+      <h3>최대 발행량 (Admin 전용)</h3>
+      <p>NFT 컬렉션의 최대 발행 가능 수량을 설정합니다.</p>
+      <ul>
+        <li>이미 발행된 수량보다 작게 설정할 수 없음</li>
+        <li>판매 종료 ID보다 크거나 같아야 함</li>
+      </ul>
+
+      <h3>1회 최대 민팅 수량 (Operator)</h3>
+      <p>사용자가 한 번의 트랜잭션으로 민팅할 수 있는 최대 개수입니다.</p>
+      <ul>
+        <li>일반적으로 10~30개 권장</li>
+        <li>너무 크게 설정하면 가스비 증가</li>
+      </ul>
+
+      <h3>화이트리스트 배치 크기 (Operator)</h3>
+      <p>한 번에 추가/제거할 수 있는 화이트리스트 주소의 최대 개수입니다.</p>
+      <ul>
+        <li>기본값: 100개</li>
+        <li>최대값: 300개 (가스 한도 주의)</li>
+      </ul>
+
+      <h3>운영자 최대 민팅 수량 (Operator)</h3>
+      <p>운영자가 Owner 민팅으로 한 번에 발행할 수 있는 최대 개수입니다.</p>
+      <ul>
+        <li>에어드랍이나 대량 민팅 시 사용</li>
+        <li>일반적으로 100개 권장</li>
+      </ul>
+    </div>
+
+    <!-- 기본 설정 -->
+    <div class="guide-section">
+      <h2>⚙️ 기본 설정</h2>
+      
+      <h3>Base URI</h3>
+      <p>NFT 메타데이터의 기본 경로를 설정합니다.</p>
+      <pre>https://api.example.com/metadata/  ← 슬래시(/) 필수!
+ipfs://QmXXXXXXXXXXXXXXXXXXXXXXXXXXX/  ← IPFS도 가능</pre>
+      <p>각 토큰의 메타데이터 URL: <code>baseURI + tokenId + ".json"</code></p>
+      <p><strong>예시:</strong> <code>https://api.example.com/metadata/1.json</code></p>
+
+      <h3>일시정지 (긴급 차단)</h3>
+      <p>긴급 상황 시 <strong>모든 NFT 관련 활동을 완전히 차단</strong>합니다.</p>
+      
+      <div class="warning-guide">
+        <h4>⚠️ 일시정지 시 차단되는 기능</h4>
+        <ul>
+          <li>사용자 민팅 (화이트리스트/퍼블릭 전부)</li>
+          <li>운영자 민팅 (Owner 민팅)</li>
+          <li>NFT 전송 (지갑 간 이동)</li>
+          <li>OpenSea 등 2차 마켓 거래</li>
+          <li>NFT 소각 (Burn)</li>
+        </ul>
+      </div>
+      
+      <h4>사용 시나리오</h4>
+      <ul>
+        <li>보안 사고 발견 시 즉시 활성화</li>
+        <li>스마트 컨트랙트 버그 발견 시</li>
+        <li>비정상적인 거래 패턴 감지 시</li>
+        <li>문제 해결 후 반드시 해제해야 함</li>
+      </ul>
+
+      <h3>로열티 (EIP-2981)</h3>
+      <p>NFT 2차 판매 시 크리에이터에게 지급되는 수수료를 설정합니다.</p>
+      <ul>
+        <li>로열티 수신자 주소 입력</li>
+        <li>로열티 비율 입력 (0~10%, 예: 5% = 5 입력)</li>
+        <li>OpenSea 등 마켓플레이스에서 자동 인식</li>
+      </ul>
+
+      <h3>출금</h3>
+      <ol>
+        <li><strong>출금 주소 설정</strong>: ETH를 받을 주소 지정</li>
+        <li><strong>전액 출금</strong>: 컨트랙트에 쌓인 모든 ETH를 출금 주소로 전송</li>
+      </ol>
+    </div>
+
+    <!-- 권한 관리 -->
+    <div class="guide-section">
+      <h2>👥 권한 관리</h2>
+      
+      <h3>운영자 추가</h3>
+      <p>팀원에게 일상적인 관리 권한을 부여합니다.</p>
+      <ol>
+        <li>신뢰할 수 있는 팀원의 주소 입력</li>
+        <li>"운영자 권한 부여" 버튼 클릭</li>
+        <li>MetaMask에서 트랜잭션 승인</li>
+      </ol>
+
+      <h3>관리자 추가</h3>
+      <div class="warning-guide">
+        <h4>⚠️ 매우 신중하게!</h4>
+        <p>관리자는 <strong>모든 권한</strong>을 가지며, 다른 관리자를 추가하거나 제거할 수 있습니다.</p>
+        <p>절대적으로 신뢰할 수 있는 사람에게만 부여하세요.</p>
+      </div>
+
+      <h3>권한 제거</h3>
+      <p>더 이상 필요하지 않은 팀원의 권한을 제거합니다.</p>
+      <ul>
+        <li>운영자 권한 제거: 해당 주소는 더 이상 관리 기능 사용 불가</li>
+        <li>관리자 권한 제거: 자신의 권한을 제거하면 되돌릴 수 없음!</li>
+      </ul>
+    </div>
+
+    <!-- 조회 기능 -->
+    <div class="guide-section">
+      <h2>🔎 조회 기능</h2>
+      
+      <p>모든 조회 기능은 <strong>가스비가 들지 않으며</strong>, 누구나 사용할 수 있습니다.</p>
+
+      <h3>화이트리스트 여부 조회</h3>
+      <p>특정 주소가 화이트리스트에 등록되어 있는지 확인합니다.</p>
+
+      <h3>NFT 보유량 조회</h3>
+      <p>특정 주소가 보유한 NFT 개수를 확인합니다.</p>
+
+      <h3>권한 조회</h3>
+      <p>특정 주소의 권한 레벨(Admin/Operator/User)을 확인합니다.</p>
+
+      <h3>민팅 상태 조회</h3>
+      <ul>
+        <li><strong>화이트리스트 민팅 상태</strong>: 특정 주소의 화이트리스트 민팅 가능 여부, 가격, 남은 수량 확인</li>
+        <li><strong>퍼블릭 민팅 상태</strong>: 퍼블릭 민팅 가능 여부, 가격, 남은 수량 확인</li>
+      </ul>
+    </div>
+
+    <!-- 보안 가이드 -->
+    <div class="guide-section">
+      <h2>🔒 보안 가이드</h2>
+      
+      <h3>지갑 보안</h3>
+      <ul>
+        <li>관리자 지갑은 <strong>하드웨어 지갑</strong> (Ledger, Trezor) 사용 권장</li>
+        <li>시드 구문(12~24단어)은 <strong>절대 온라인에 저장하지 마세요</strong></li>
+        <li>의심스러운 사이트에서는 지갑을 연결하지 마세요</li>
+      </ul>
+
+      <h3>권한 관리</h3>
+      <ul>
+        <li>관리자 권한은 <strong>최소한의 인원</strong>에게만 부여</li>
+        <li>퇴사한 팀원의 권한은 <strong>즉시 제거</strong></li>
+        <li>정기적으로 권한 현황 점검</li>
+      </ul>
+
+      <h3>트랜잭션 확인</h3>
+      <ul>
+        <li>MetaMask 팝업에서 <strong>반드시 내용을 확인</strong>하고 승인</li>
+        <li>의도하지 않은 트랜잭션은 즉시 거부</li>
+        <li>주요 트랜잭션 후에는 Explorer에서 결과 확인</li>
+      </ul>
+
+      <h3>긴급 상황 대응</h3>
+      <ol>
+        <li><strong>일시정지</strong>: 즉시 "⏸️ 전송 일시정지" 활성화</li>
+        <li><strong>권한 제거</strong>: 의심스러운 주소의 권한 제거</li>
+        <li><strong>출금</strong>: 필요시 컨트랙트 잔액을 안전한 주소로 출금</li>
+        <li><strong>커뮤니티 공지</strong>: 문제 상황을 커뮤니티에 신속히 알림</li>
+      </ol>
+    </div>
+
+    <!-- FAQ -->
+    <div class="guide-section">
+      <h2>❓ 자주 묻는 질문 (FAQ)</h2>
+      
+      <h3>Q: 트랜잭션이 실패했어요</h3>
+      <p><strong>A:</strong> 다음을 확인하세요:</p>
+      <ul>
+        <li>충분한 ETH 잔액이 있는지 (가스비 포함)</li>
+        <li>올바른 네트워크에 연결되어 있는지</li>
+        <li>입력값이 유효한지 (주소 형식, 숫자 범위 등)</li>
+        <li>필요한 권한이 있는지</li>
+      </ul>
+
+      <h3>Q: 가스비가 너무 높아요</h3>
+      <p><strong>A:</strong> 다음을 시도하세요:</p>
+      <ul>
+        <li>네트워크 혼잡도가 낮을 때 (주말, 심야) 시도</li>
+        <li>여러 작업을 한 번에 처리 (예: 화이트리스트 일괄 추가)</li>
+        <li>Testnet에서 먼저 테스트</li>
+      </ul>
+
+      <h3>Q: 실수로 자신의 관리자 권한을 제거했어요</h3>
+      <p><strong>A:</strong> 다른 관리자에게 요청하여 권한을 다시 부여받아야 합니다. 다른 관리자가 없다면 컨트랙트를 새로 배포해야 할 수 있습니다.</p>
+
+      <h3>Q: 컨트랙트 주소는 어디서 설정하나요?</h3>
+      <p><strong>A:</strong> <code>contract.js</code> 파일의 <code>CONTRACT_ADDRESSES</code> 객체에서 설정합니다.</p>
+      <pre>const CONTRACT_ADDRESSES = {
+  1: "0x메인넷_컨트랙트_주소",
+  11155111: "0x세폴리아_컨트랙트_주소"
+};</pre>
+    </div>
+
+    <div style="text-align:center;margin-top:40px;">
+      <a href="./index.html" class="back-button">← 대시보드로 돌아가기</a>
+    </div>
+
+    <footer style="margin-top:32px;text-align:center;opacity:0.8;">
+      <small>© Dazzling Animals NFT Admin • Ethereum / Sepolia Dashboard</small>
+    </footer>
+  </div>
+</body>
+
+</html>
