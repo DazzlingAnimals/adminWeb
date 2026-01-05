@@ -282,8 +282,16 @@
             <div id="ds_maxSupply" class="dashboard-card-value">-</div>
           </div>
           <div class="dashboard-card">
-            <div class="dashboard-card-title">🔢 1회 최대 민팅</div>
-            <div id="ds_maxMintAmount" class="dashboard-card-value">-</div>
+            <div class="dashboard-card-title">🔄 현재 라운드 (Epoch)</div>
+            <div id="ds_currentEpoch" class="dashboard-card-value">-</div>
+          </div>
+          <div class="dashboard-card">
+            <div class="dashboard-card-title">🤍 화이트리스트 1회 제한</div>
+            <div id="ds_maxWhitelistMintPerTx" class="dashboard-card-value">-</div>
+          </div>
+          <div class="dashboard-card">
+            <div class="dashboard-card-title">🌍 퍼블릭 1회 제한</div>
+            <div id="ds_maxPublicMintPerTx" class="dashboard-card-value">-</div>
           </div>
           <div class="dashboard-card">
             <div class="dashboard-card-title">👥 화이트리스트 배치</div>
@@ -813,13 +821,22 @@
           <small class="note">💡 현재 발행량 및 판매 종료 ID보다 크거나 같아야 합니다.</small>
         </div>
 
-        <!-- 1회 최대 민팅 수량 -->
+        <!-- 화이트리스트 트랜잭션당 민팅 제한 -->
         <div class="form-group">
-          <label class="form-label">🔢 1회 최대 민팅 수량 <span class="required-badge">OPERATOR</span></label>
-          <p class="function-desc">사용자가 한 번의 트랜잭션으로 민팅할 수 있는 최대 NFT 개수를 설정합니다.</p>
-          <input type="number" id="newMaxMintAmount" placeholder="예: 30" class="form-input" min="1" step="1">
-          <button class="btn-primary" onclick="setMaxMintAmount()">설정</button>
-          <small class="note">💡 너무 크게 설정하면 가스비가 높아질 수 있습니다.</small>
+          <label class="form-label">🤍 화이트리스트 1회 민팅 제한 <span class="required-badge">OPERATOR</span></label>
+          <p class="function-desc">화이트리스트 사용자가 한 번의 트랜잭션으로 민팅할 수 있는 최대 NFT 개수를 설정합니다. (Epoch당 최대 2개 제한 내에서)</p>
+          <input type="number" id="newMaxWhitelistMintPerTx" placeholder="예: 2 (최대 2개)" class="form-input" min="1" max="2" step="1">
+          <button class="btn-primary" onclick="setMaxWhitelistMintPerTx()">설정</button>
+          <small class="note">💡 Epoch당 총 2개까지만 민팅 가능하므로, 이 값은 1 또는 2만 설정 가능합니다.</small>
+        </div>
+
+        <!-- 퍼블릭 트랜잭션당 민팅 제한 -->
+        <div class="form-group">
+          <label class="form-label">🌍 퍼블릭 1회 민팅 제한 <span class="required-badge">OPERATOR</span></label>
+          <p class="function-desc">퍼블릭 사용자가 한 번의 트랜잭션으로 민팅할 수 있는 최대 NFT 개수를 설정합니다. (Epoch당 최대 12개 제한 내에서)</p>
+          <input type="number" id="newMaxPublicMintPerTx" placeholder="예: 12 (최대 12개)" class="form-input" min="1" max="12" step="1">
+          <button class="btn-primary" onclick="setMaxPublicMintPerTx()">설정</button>
+          <small class="note">💡 Epoch당 총 12개까지만 민팅 가능하므로, 이 값은 1~12 사이로 설정 가능합니다.</small>
         </div>
 
         <!-- 화이트리스트 배치 크기 -->
