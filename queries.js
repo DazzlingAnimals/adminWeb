@@ -10,7 +10,8 @@
 function resetDashboard(reasonText = "컨트랙트 미설정") {
   const ids = [
     "ds_name","ds_symbol","ds_totalSupply","ds_totalMinted",
-    "ds_maxSupply","ds_maxMintAmount","ds_maxWhitelistBatchSize","ds_maxOperatorMintAmount",
+    "ds_maxSupply","ds_maxWhitelistMintPerTx","ds_maxPublicMintPerTx",
+    "ds_maxWhitelistBatchSize","ds_maxOperatorMintAmount","ds_currentEpoch",
     "ds_paused","ds_whitelistStart","ds_publicStart","ds_whitelistCost","ds_publicCost",
     "ds_saleEndTokenId","ds_withdrawalAddress","ds_contractBalance"
   ];
@@ -607,9 +608,10 @@ async function loadContractState() {
       totalSupply,
       totalMinted,
       maxSupply,
-      maxMintAmount,
+      perTxLimits,
       maxWhitelistBatchSize,
       maxOperatorMintAmount,
+      currentEpoch,
       paused,
       whitelistStart,
       publicStart,
@@ -624,16 +626,17 @@ async function loadContractState() {
       contract.totalSupply(),
       contract.totalMinted().catch(() => contract.totalSupply()),
       contract.maxSupply(),
-      contract.maxMintAmount(),
+      contract.perTxMintLimits(),
       contract.maxWhitelistBatchSize(),
       contract.maxOperatorMintAmount(),
+      contract.currentEpoch(),
       contract.paused(),
       contract.whitelistStart(),
       contract.publicStart(),
       contract.whitelistCost(),
       contract.publicCost(),
       contract.saleEndTokenId(),
-      contract.withdrawalAddress(), // public 변수 직접 호출
+      contract.withdrawalAddress(),
       ethersProvider.getBalance(CONTRACT_ADDRESS)
     ]);
     
@@ -643,9 +646,14 @@ async function loadContractState() {
     setText("ds_totalSupply", totalSupply.toString());
     setText("ds_totalMinted", totalMinted.toString());
     setText("ds_maxSupply", maxSupply.toString());
-    setText("ds_maxMintAmount", maxMintAmount.toString());
+    
+    // 민팅 제한 (perTxLimits 구조 분해)
+    setText("ds_maxWhitelistMintPerTx", perTxLimits.whitelistPerTx.toString());
+    setText("ds_maxPublicMintPerTx", perTxLimits.publicPerTx.toString());
+    
     setText("ds_maxWhitelistBatchSize", maxWhitelistBatchSize.toString());
     setText("ds_maxOperatorMintAmount", maxOperatorMintAmount.toString());
+    setText("ds_currentEpoch", currentEpoch.toString());
     setText("ds_paused", paused ? "⏸️ 일시정지" : "▶️ 정상");
     setText("ds_whitelistStart", whitelistStart ? "✅ 시작됨" : "❌ 중지됨");
     setText("ds_publicStart", publicStart ? "✅ 시작됨" : "❌ 중지됨");
