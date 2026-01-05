@@ -471,9 +471,9 @@ async function setMaxSupply() {
 }
 
 /**
- * 1회 최대 민팅 수량 설정
+ * 화이트리스트 트랜잭션당 민팅 제한 설정
  */
-async function setMaxMintAmount() {
+async function setMaxWhitelistMintPerTx() {
   await ensureConnected();
   
   if (isProcessing) {
@@ -491,40 +491,40 @@ async function setMaxMintAmount() {
   try {
     await checkAndSwitchNetwork();
     
-    const maxMintAmount = document.getElementById("newMaxMintAmount").value.trim();
+    const newLimit = document.getElementById("newMaxWhitelistMintPerTx").value.trim();
     
     // 입력 검증
-    if (!isValidInteger(maxMintAmount, 1)) {
-      throw new Error("최대 민팅 수량은 1 이상의 정수여야 합니다.");
+    if (!isValidInteger(newLimit, 1, 2)) {
+      throw new Error("화이트리스트 1회 민팅 제한은 1~2 사이의 정수여야 합니다.");
     }
     
     const CONTRACT_ADDRESS = getContractAddress(Network);
     const contract = new ethers.Contract(CONTRACT_ADDRESS, NFT_ABI, ethersSigner);
     
     // 가스 추정 (20% 여유)
-    const gas = await contract.estimateGas.setMaxMintAmount(maxMintAmount);
+    const gas = await contract.estimateGas.setMaxWhitelistMintPerTx(newLimit);
     
     // 트랜잭션 전송
-    const tx = await contract.setMaxMintAmount(maxMintAmount, {
+    const tx = await contract.setMaxWhitelistMintPerTx(newLimit, {
       gasLimit: gas.mul(120).div(100)
     });
     
     const explorerUrl = getExplorerUrl(Network);
-    alert(`⏳ 트랜잭션 전송됨\n\n새 최대 민팅 수량: ${maxMintAmount}개\n\n${explorerUrl}/tx/${tx.hash}`);
+    alert(`⏳ 트랜잭션 전송됨\n\n새 화이트리스트 1회 제한: ${newLimit}개\n\n${explorerUrl}/tx/${tx.hash}`);
     
     // 트랜잭션 대기
     try {
       await tx.wait();
-      alert(`✅ 최대 민팅 수량 업데이트 완료!\n\n새 최대 민팅 수량: ${maxMintAmount}개\n\n트랜잭션 해시: ${tx.hash}`);
+      alert(`✅ 화이트리스트 1회 제한 설정 완료!\n\n새 제한: ${newLimit}개\n\n트랜잭션 해시: ${tx.hash}`);
     } catch (waitError) {
       alert(`⚠️ 트랜잭션 전송은 완료되었으나 확인 중 오류 발생\n\nExplorer에서 확인: ${explorerUrl}/tx/${tx.hash}`);
     }
     
     await loadContractState();
-    document.getElementById("newMaxMintAmount").value = "";
+    document.getElementById("newMaxWhitelistMintPerTx").value = "";
     
   } catch (e) {
-    errorLog("최대 민팅 수량 설정 실패:", e);
+    errorLog("화이트리스트 1회 제한 설정 실패:", e);
     alert(friendlyError(e));
   } finally {
     isProcessing = false;
@@ -532,6 +532,70 @@ async function setMaxMintAmount() {
     button.innerText = originalText;
   }
 }
+
+/**
+ * 퍼블릭 트랜잭션당 민팅 제한 설정
+ */
+async function setMaxPublicMintPerTx() {
+  await ensureConnected();
+  
+  if (isProcessing) {
+    alert("트랜잭션 처리 중입니다...");
+    return;
+  }
+  
+  const button = event.target;
+  const originalText = button.innerText;
+  
+  isProcessing = true;
+  button.disabled = true;
+  button.innerText = "⏳ 처리 중...";
+  
+  try {
+    await checkAndSwitchNetwork();
+    
+    const newLimit = document.getElementById("newMaxPublicMintPerTx").value.trim();
+    
+    // 입력 검증
+    if (!isValidInteger(newLimit, 1, 12)) {
+      throw new Error("퍼블릭 1회 민팅 제한은 1~12 사이의 정수여야 합니다.");
+    }
+    
+    const CONTRACT_ADDRESS = getContractAddress(Network);
+    const contract = new ethers.Contract(CONTRACT_ADDRESS, NFT_ABI, ethersSigner);
+    
+    // 가스 추정 (20% 여유)
+    const gas = await contract.estimateGas.setMaxPublicMintPerTx(newLimit);
+    
+    // 트랜잭션 전송
+    const tx = await contract.setMaxPublicMintPerTx(newLimit, {
+      gasLimit: gas.mul(120).div(100)
+    });
+    
+    const explorerUrl = getExplorerUrl(Network);
+    alert(`⏳ 트랜잭션 전송됨\n\n새 퍼블릭 1회 제한: ${newLimit}개\n\n${explorerUrl}/tx/${tx.hash}`);
+    
+    // 트랜잭션 대기
+    try {
+      await tx.wait();
+      alert(`✅ 퍼블릭 1회 제한 설정 완료!\n\n새 제한: ${newLimit}개\n\n트랜잭션 해시: ${tx.hash}`);
+    } catch (waitError) {
+      alert(`⚠️ 트랜잭션 전송은 완료되었으나 확인 중 오류 발생\n\nExplorer에서 확인: ${explorerUrl}/tx/${tx.hash}`);
+    }
+    
+    await loadContractState();
+    document.getElementById("newMaxPublicMintPerTx").value = "";
+    
+  } catch (e) {
+    errorLog("퍼블릭 1회 제한 설정 실패:", e);
+    alert(friendlyError(e));
+  } finally {
+    isProcessing = false;
+    button.disabled = false;
+    button.innerText = originalText;
+  }
+}
+
 
 /**
  * 화이트리스트 배치 크기 설정
